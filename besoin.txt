@@ -1,0 +1,7 @@
+Élégance Event est un site web qui permet à des clients de découvrir des prestations événementielles, de créer un compte, de se connecter, de demander un devis et de passer une commande.
+
+Le projet a pour objectif de proposer une interface simple, claire et responsive, avec une partie publique, une partie client et une partie administrateur.
+
+Le site devra permettre de gérer les utilisateurs, les prestations, les devis et les commandes grâce à une base de données MySQL et à un développement en PHP.
+
+Le projet doit rester simple et réaliste pour être terminé dans les temps et présenté à l’examen DWWM.

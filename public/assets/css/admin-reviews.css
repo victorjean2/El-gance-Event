@@ -1,0 +1,114 @@
+.admin-reviews-page {
+    padding: 40px 0;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.empty-message {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* TABLE */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.reviews-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.reviews-table th {
+    background: #111;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.reviews-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.reviews-table tr:hover {
+    background: #f9f9f9;
+}
+
+/* COMMENT */
+
+.comment {
+    max-width: 250px;
+}
+
+/* NOTE */
+
+.rating {
+    font-weight: bold;
+}
+
+/* STATUS BADGE */
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.status-published {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-refused {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ACTION BUTTONS */
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.btn.publish {
+    background: #28a745;
+    color: white;
+}
+
+.btn.refuse {
+    background: #ffc107;
+    color: black;
+}
+
+.btn.delete {
+    background: #dc3545;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}

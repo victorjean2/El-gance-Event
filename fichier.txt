@@ -1,0 +1,126 @@
+case 'review_store':
+    $controller->store();
+    break;
+
+case 'admin_reviews':
+    $controller->adminIndex();
+    break;
+
+case 'admin_review_status':
+    $controller->updateStatus();
+    break;
+
+case 'admin_review_delete':
+    $controller->delete();
+    break;
+
+
+     require_once '../app/controllers/ReviewController.php';
+     require_once '../app/controllers/ReviewController.php';
+     require_once '../app/controllers/ReviewController.php';
+     require_once '../app/controllers/ReviewController.php';
+
+    $controller = new ReviewController();
+    $controller = new ReviewController();
+    $controller = new ReviewController();
+    $controller = new ReviewController();
+
+
+
+
+
+
+    public function checkout()
+    {
+        if (empty($_SESSION['user'])) {
+            $_SESSION['cart_error'] = "Vous devez être connecté pour valider votre panier.";
+            header('Location: ' . BASE_URL . '/index.php?route=login');
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: ' . BASE_URL . '/index.php?route=cart');
+            exit;
+        }
+
+        if (empty($_SESSION['cart']) || !is_array($_SESSION['cart'])) {
+            $_SESSION['cart_error'] = "Votre panier est vide.";
+            header('Location: ' . BASE_URL . '/index.php?route=cart');
+            exit;
+        }
+
+        $userId = (int) $_SESSION['user']['id'];
+        $cartItems = $_SESSION['cart'];
+
+        $eventDate = trim($_POST['event_date'] ?? '');
+        $deliveryDatetime = trim($_POST['delivery_datetime'] ?? '');
+        $returnDatetime = trim($_POST['return_datetime'] ?? '');
+
+        $errors = [];
+
+        if ($deliveryDatetime === '') {
+            $errors[] = "La date et l'heure de livraison sont obligatoires.";
+        }
+
+        if ($returnDatetime === '') {
+            $errors[] = "La date et l'heure de retour sont obligatoires.";
+        }
+
+        if ($deliveryDatetime !== '' && $returnDatetime !== '') {
+            $deliveryTimestamp = strtotime($deliveryDatetime);
+            $returnTimestamp = strtotime($returnDatetime);
+
+            if ($deliveryTimestamp === false || $returnTimestamp === false) {
+                $errors[] = "Les dates saisies sont invalides.";
+            } elseif ($returnTimestamp <= $deliveryTimestamp) {
+                $errors[] = "La date de retour doit être postérieure à la date de livraison.";
+            }
+        }
+
+        if (!empty($eventDate)) {
+            $eventTimestamp = strtotime($eventDate);
+            if ($eventTimestamp === false) {
+                $errors[] = "La date de l'événement est invalide.";
+            }
+        }
+
+        if (!empty($errors)) {
+            $_SESSION['cart_error'] = implode(' ', $errors);
+            header('Location: ' . BASE_URL . '/index.php?route=cart');
+            exit;
+        }
+
+        $orderModel = new Order();
+
+        $orderId = $orderModel->createOrder(
+            $userId,
+            $cartItems,
+            $eventDate !== '' ? $eventDate : null,
+            $deliveryDatetime,
+            $returnDatetime
+        );
+
+        if ($orderId === false) {
+            $_SESSION['cart_error'] = "Une erreur est survenue lors de la validation de votre commande.";
+            header('Location: ' . BASE_URL . '/index.php?route=cart');
+            exit;
+        }
+
+        unset($_SESSION['cart']);
+        $_SESSION['last_order_id'] = $orderId;
+        $_SESSION['cart_success'] = "Votre commande a bien été enregistrée.";
+
+        header('Location: ' . BASE_URL . '/index.php?route=order-confirmation');
+        exit;
+    }
+
+
+
+
+
+
+
+    catch (Exception $e) {
+            $this->pdo->rollBack();
+            return false;
+        }
