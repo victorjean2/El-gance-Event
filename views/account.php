@@ -43,7 +43,7 @@
             <section class="account-hero" aria-labelledby="account-title">
                 <p class="account-label">Espace personnel</p>
                 <h1 id="account-title">
-                    Bonjour <?= htmlspecialchars($_SESSION['user']['firstname'] ?? '') ?> 
+                    Bonjour <?= htmlspecialchars($_SESSION['user']['firstname'] ?? '') ?>
                 </h1>
                 <p class="account-intro">
                     Bienvenue dans votre tableau de bord. Retrouvez ici vos informations,
@@ -165,8 +165,9 @@
         <div class="container footer-bottom">
             <p>&copy; 2026 Élégance Event. Tous droits réservés.</p>
             <ul class="footer-links-inline">
-                <li><a href="#">Mentions légales</a></li>
-                <li><a href="#">Confidentialité</a></li>
+                <li><a href="<?= BASE_URL ?>/index.php?route=mentions">Mentions légales</a></li>
+                <li><a href="<?= BASE_URL ?>/index.php?route=privacy">Politique de confidentialité</a></li>
+                <li><a href="<?= BASE_URL ?>/index.php?route=cgu">Conditions d’utilisation</a></li>
                 <li><a href="#">Presse</a></li>
             </ul>
         </div>

@@ -120,8 +120,7 @@
                                 <a
                                     href="<?= BASE_URL ?>/index.php?route=product&id=<?= $productId ?>"
                                     class="product-card-link-image"
-                                    aria-label="Voir le détail du produit <?= htmlspecialchars($title !== '' ? $title : 'Produit') ?>"
-                                >
+                                    aria-label="Voir le détail du produit <?= htmlspecialchars($title !== '' ? $title : 'Produit') ?>">
                                     <?php if ($image !== ''): ?>
                                         <img
                                             src="<?= BASE_URL ?>/uploads/<?= htmlspecialchars($image) ?>"
@@ -136,8 +135,7 @@
                                 <h3>
                                     <a
                                         href="<?= BASE_URL ?>/index.php?route=product&id=<?= $productId ?>"
-                                        class="product-title-link"
-                                    >
+                                        class="product-title-link">
                                         <?= htmlspecialchars($title !== '' ? $title : 'Produit sans titre') ?>
                                     </a>
                                 </h3>
@@ -159,8 +157,7 @@
                                 <div class="product-card-actions">
                                     <a
                                         href="<?= BASE_URL ?>/index.php?route=product&id=<?= $productId ?>"
-                                        class="btn btn-secondary"
-                                    >
+                                        class="btn btn-secondary">
                                         Voir le détail
                                     </a>
 
@@ -210,9 +207,9 @@
             <div class="footer-column">
                 <h2 class="footer-title">L’agence</h2>
                 <ul class="footer-links">
-                    <li><a href="#">Mentions légales</a></li>
-                    <li><a href="#">Politique de confidentialité</a></li>
-                    <li><a href="#">Conditions d’utilisation</a></li>
+                    <li><a href="<?= BASE_URL ?>/index.php?route=mentions">Mentions légales</a></li>
+                    <li><a href="<?= BASE_URL ?>/index.php?route=privacy">Politique de confidentialité</a></li>
+                    <li><a href="<?= BASE_URL ?>/index.php?route=cgu">Conditions d’utilisation</a></li>
                 </ul>
             </div>
 

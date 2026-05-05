@@ -20,9 +20,9 @@ class AuthController
             $firstname = trim($_POST['firstname'] ?? '');
             $email = trim($_POST['email'] ?? '');
             $password = trim($_POST['password'] ?? '');
-            $passwordConfirm = trim($_POST['password_confirm'] ?? '');
+            
 
-            if (empty($lastname) || empty($firstname) || empty($email) || empty($password) || empty($passwordConfirm)) {
+            if (empty($lastname) || empty($firstname) || empty($email) || empty($password)) {
                 $errors[] = "Tous les champs sont obligatoires.";
             }
 
@@ -32,10 +32,7 @@ class AuthController
 
             $passwordErrors = validatePassword($password);
             $errors = array_merge($errors, $passwordErrors);
-
-            if ($password !== $passwordConfirm) {
-                $errors[] = "Les mots de passe ne correspondent pas.";
-            }
+            
 
             $userModel = new User();
 

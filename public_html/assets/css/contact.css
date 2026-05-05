@@ -239,10 +239,70 @@ ul {
     min-height: 140px;
 }
 
-/* Optionnel : petit rappel visuel sur champs requis */
+/* Petit rappel visuel sur les champs requis */
 .form-group input:required,
 .form-group textarea:required {
     border-left: 3px solid #d62828;
+}
+
+/* =========================
+   RGPD
+========================= */
+.rgpd-group,
+.form-rgpd {
+    padding: 1rem;
+    background-color: #faf7f2;
+    border: 1px solid #eadfce;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+.rgpd-label,
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    cursor: pointer;
+    line-height: 1.5;
+}
+
+.rgpd-label input[type="checkbox"],
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    margin-top: 0.25rem;
+    accent-color: #c47a1c;
+    cursor: pointer;
+}
+
+.rgpd-label span,
+.checkbox-label span {
+    font-size: 0.9rem;
+    color: #444444;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.rgpd-label small,
+.checkbox-label small {
+    display: block;
+    margin-top: 0.5rem;
+    color: #666666;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+.rgpd-label a,
+.checkbox-label a {
+    color: #c47a1c;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.rgpd-label a:hover,
+.checkbox-label a:hover {
+    color: #9d5f12;
 }
 
 /* =========================
@@ -299,26 +359,6 @@ ul {
 }
 
 /* =========================
-   RGPD
-========================= */
-.rgpd-group {
-    margin-top: 1rem;
-}
-
-.rgpd-label {
-    display: flex;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-    color: #555;
-    align-items: flex-start;
-    line-height: 1.5;
-}
-
-.rgpd-label input {
-    margin-top: 3px;
-}
-
-/* =========================
    INFOS
 ========================= */
 .contact-info-section {
@@ -329,7 +369,8 @@ ul {
 
 .contact-visual-card,
 .contact-details-card,
-.contact-quote-card {
+.contact-quote-card,
+.extra-card {
     background: #ffffff;
     border-radius: 12px;
     overflow: hidden;
@@ -392,6 +433,38 @@ ul {
     font-style: italic;
     text-align: center;
     color: #1f2430;
+}
+
+/* =========================
+   INFORMATIONS UTILES
+========================= */
+.contact-extra {
+    padding: 3rem 0;
+}
+
+.contact-extra h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.contact-extra-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.extra-card {
+    padding: 1.5rem;
+}
+
+.extra-card h3 {
+    color: #1f2430;
+    margin-bottom: 0.8rem;
+}
+
+.extra-card p {
+    color: #666666;
 }
 
 /* =========================
@@ -461,6 +534,11 @@ ul {
 
     .form-row .form-group {
         flex: 1;
+    }
+
+    .contact-extra-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .footer-links-inline {

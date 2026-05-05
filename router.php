@@ -9,6 +9,8 @@ require_once '../controllers/CartController.php';
 require_once '../controllers/OrderController.php';
 require_once '../controllers/ReviewController.php';
 require_once '../controllers/ProductController.php';
+require_once '../controllers/LegalController.php';
+
 
 $homeController = new HomeController();
 $authController = new AuthController();
@@ -19,6 +21,7 @@ $cartController = new CartController();
 $orderController = new OrderController();
 $reviewController = new ReviewController();
 $productController = new ProductController();
+$controller = new LegalController();
 
 $route = $_GET['route'] ?? '';
 
@@ -129,6 +132,18 @@ switch ($route) {
 
     case 'product':
         $productController->show();
+        break;
+
+    case 'mentions':
+        $controller->mentions();
+        break;
+
+    case 'privacy':
+        $controller->privacy();
+        break;
+
+    case 'cgu':
+        $controller->cgu();
         break;
 
     default:

@@ -37,7 +37,10 @@ class Product
 
     public function getAll(): array
     {
-        $sql = "SELECT * FROM products ORDER BY created_at DESC";
+        $sql = "SELECT *
+                FROM products
+                ORDER BY created_at DESC";
+
         $stmt = $this->pdo->query($sql);
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -45,7 +48,41 @@ class Product
 
     public function getPublishedProducts(): array
     {
-        $sql = "SELECT * FROM products WHERE is_published = 1 ORDER BY created_at DESC";
+        $sql = "SELECT *
+                FROM products
+                WHERE is_published = 1
+                ORDER BY created_at DESC";
+
+        $stmt = $this->pdo->query($sql);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getPublishedProductsByCategory(string $category): array
+    {
+        $sql = "SELECT *
+                FROM products
+                WHERE is_published = 1
+                  AND category = :category
+                ORDER BY created_at DESC";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            'category' => $category
+        ]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getPublishedCategories(): array
+    {
+        $sql = "SELECT DISTINCT category
+                FROM products
+                WHERE is_published = 1
+                  AND category IS NOT NULL
+                  AND category != ''
+                ORDER BY category ASC";
+
         $stmt = $this->pdo->query($sql);
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -53,7 +90,11 @@ class Product
 
     public function findById(int $id): array|false
     {
-        $sql = "SELECT * FROM products WHERE id = :id";
+        $sql = "SELECT *
+                FROM products
+                WHERE id = :id
+                LIMIT 1";
+
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
             'id' => $id
@@ -64,7 +105,27 @@ class Product
 
     public function getProductById(int $id): array|false
     {
-        $sql = "SELECT * FROM products WHERE id = :id LIMIT 1";
+        $sql = "SELECT *
+                FROM products
+                WHERE id = :id
+                LIMIT 1";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            'id' => $id
+        ]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getPublishedProductById(int $id): array|false
+    {
+        $sql = "SELECT *
+                FROM products
+                WHERE id = :id
+                  AND is_published = 1
+                LIMIT 1";
+
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
             'id' => $id
@@ -127,27 +188,13 @@ class Product
 
     public function delete(int $id): bool
     {
-        $sql = "DELETE FROM products WHERE id = :id";
+        $sql = "DELETE FROM products
+                WHERE id = :id";
+
         $stmt = $this->pdo->prepare($sql);
 
         return $stmt->execute([
             'id' => $id
         ]);
-    }
-
-    public function getPublishedProductById(int $id): array|false
-    {
-        $sql = "SELECT *
-            FROM products
-            WHERE id = :id
-              AND is_published = 1
-            LIMIT 1";
-
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            'id' => $id
-        ]);
-
-        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

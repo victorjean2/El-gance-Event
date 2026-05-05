@@ -11,7 +11,21 @@ class MongoConnection
     public static function getClient(): Client
     {
         if (self::$client === null) {
-            self::$client = new Client('mongodb://root:example@mongodb:27017');
+            /*self::$client = new Client('mongodb://root:example@mongodb:27017');*/
+            self::$client = new Client(
+                'mongodb+srv://victorjean2_db_user:mWZFCGbeCbaELxHQ@cluster0.gnbd7gh.mongodb.net/?appName=Cluster0',
+                [
+                    'retryWrites' => true,
+                    'w' => 'majority',
+                ],
+                [
+                    'typeMap' => [
+                        'array' => 'array',
+                        'document' => 'array',
+                        'root' => 'array',
+                    ]
+                ]
+            );
         }
 
         return self::$client;

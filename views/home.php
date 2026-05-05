@@ -50,7 +50,6 @@
             </div>
 
             <div class="hero-content container">
-
                 <h1>Créez un événement inoubliable</h1>
                 <p class="hero-text">
                     Élégance Event vous accompagne dans la création d’ambiances soignées.
@@ -66,37 +65,51 @@
                 <p class="section-subtitle">Nos services</p>
                 <h2>Nos prestations</h2>
 
-                <div class="services-grid">
+                <?php if (empty($categories)): ?>
+                    <p class="empty-products-message">
+                        Aucune catégorie n’est disponible pour le moment.
+                    </p>
+                <?php else: ?>
+                    <div class="services-grid">
 
-                    <article class="service-card">
-                        <img src="<?= BASE_URL ?>/assets/images/mobilier.png" alt="Mobilier">
-                        <h3>Mobilier</h3>
-                        <p>Tables, chaises et équipements élégants.</p>
-                        <a href="<?= BASE_URL ?>/index.php?route=services">Voir plus</a>
-                    </article>
+                        <?php foreach ($categories as $categoryItem): ?>
+                            <?php
+                            $categoryName = trim($categoryItem['category'] ?? '');
+                            $categoryUrl = BASE_URL . '/index.php?route=services&category=' . urlencode($categoryName);
 
-                    <article class="service-card">
-                        <img src="<?= BASE_URL ?>/assets/images/decoration.png" alt="Décoration">
-                        <h3>Décoration</h3>
-                        <p>Ambiances raffinées et harmonieuses.</p>
-                        <a href="<?= BASE_URL ?>/index.php?route=services">Voir plus</a>
-                    </article>
+                            $categoryImage = BASE_URL . '/assets/images/services-hero.png';
 
-                    <article class="service-card">
-                        <img src="<?= BASE_URL ?>/assets/images/traiteur.png" alt="Traiteur">
-                        <h3>Traiteur</h3>
-                        <p>Prestations conviviales et de qualité.</p>
-                        <a href="<?= BASE_URL ?>/index.php?route=services">Voir plus</a>
-                    </article>
+                            if (mb_strtolower($categoryName) === 'mobilier') {
+                                $categoryImage = BASE_URL . '/assets/images/mobilier.png';
+                            } elseif (mb_strtolower($categoryName) === 'décoration' || mb_strtolower($categoryName) === 'decoration') {
+                                $categoryImage = BASE_URL . '/assets/images/decoration.png';
+                            } elseif (mb_strtolower($categoryName) === 'traiteur') {
+                                $categoryImage = BASE_URL . '/assets/images/traiteur.png';
+                            } elseif (mb_strtolower($categoryName) === 'planning') {
+                                $categoryImage = BASE_URL . '/assets/images/planning.png';
+                            }
+                            ?>
 
-                    <article class="service-card">
-                        <img src="<?= BASE_URL ?>/assets/images/planning.png" alt="Planning">
-                        <h3>Planning</h3>
-                        <p>Organisation simplifiée de votre événement.</p>
-                        <a href="<?= BASE_URL ?>/index.php?route=services">Voir plus</a>
-                    </article>
+                            <?php if ($categoryName !== ''): ?>
+                                <article class="service-card">
+                                    <img src="<?= htmlspecialchars($categoryImage) ?>" alt="<?= htmlspecialchars($categoryName) ?>">
 
-                </div>
+                                    <h3><?= htmlspecialchars($categoryName) ?></h3>
+
+                                    <p>
+                                        Découvrez les produits disponibles dans la catégorie
+                                        <?= htmlspecialchars($categoryName) ?>.
+                                    </p>
+
+                                    <a href="<?= htmlspecialchars($categoryUrl) ?>">
+                                        Voir les produits
+                                    </a>
+                                </article>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+
+                    </div>
+                <?php endif; ?>
             </div>
         </section>
 
@@ -124,7 +137,6 @@
 
     </main>
 
-    <!-- Pied de page -->
     <footer class="site-footer">
         <div class="container footer-top">
 
@@ -138,9 +150,9 @@
             <div class="footer-column">
                 <h2 class="footer-title">L’agence</h2>
                 <ul class="footer-links">
-                    <li><a href="#">Mentions légales</a></li>
-                    <li><a href="#">Politique de confidentialité</a></li>
-                    <li><a href="#">Conditions d’utilisation</a></li>
+                    <li><a href="<?= BASE_URL ?>/index.php?route=mentions">Mentions légales</a></li>
+                    <li><a href="<?= BASE_URL ?>/index.php?route=privacy">Politique de confidentialité</a></li>
+                    <li><a href="<?= BASE_URL ?>/index.php?route=cgu">Conditions d’utilisation</a></li>
                 </ul>
             </div>
 
@@ -168,6 +180,7 @@
             <p>&copy; 2026 Élégance Event. Tous droits réservés.</p>
         </div>
     </footer>
+
     <script src="<?= BASE_URL ?>/assets/js/scrypt.js"></script>
 </body>
 

@@ -80,53 +80,82 @@
 
                         <!-- Formulaire -->
                         <form action="" method="post" class="register-form">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="lastname">Nom</label>
-                                    <input
-                                        type="text"
-                                        id="lastname"
-                                        name="lastname"
-                                        placeholder="Votre nom"
-                                        value="<?= htmlspecialchars($_POST['lastname'] ?? '') ?>"
-                                        required>
-                                </div>
 
-                                <div class="form-group">
-                                    <label for="firstname">Prénom</label>
-                                    <input
-                                        type="text"
-                                        id="firstname"
-                                        name="firstname"
-                                        placeholder="Votre prénom"
-                                        value="<?= htmlspecialchars($_POST['firstname'] ?? '') ?>"
-                                        required>
-                                </div>
-                            </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label for="lastname">Nom <span class="required">*</span></label>
+            <input
+                type="text"
+                id="lastname"
+                name="lastname"
+                placeholder="Votre nom"
+                value="<?= htmlspecialchars($_POST['lastname'] ?? '') ?>"
+                required>
+        </div>
 
-                            <div class="form-group">
-                                <label for="email">Adresse e-mail</label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    placeholder="nom@exemple.com"
-                                    value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
-                                    required>
-                            </div>
+        <div class="form-group">
+            <label for="firstname">Prénom <span class="required">*</span></label>
+            <input
+                type="text"
+                id="firstname"
+                name="firstname"
+                placeholder="Votre prénom"
+                value="<?= htmlspecialchars($_POST['firstname'] ?? '') ?>"
+                required>
+        </div>
+    </div>
 
-                            <div class="form-group">
-                                <label for="password">Mot de passe</label>
-                                <input
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    placeholder="********"
-                                    required>
-                            </div>
+    <div class="form-group">
+        <label for="email">Adresse e-mail <span class="required">*</span></label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="nom@exemple.com"
+            value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
+            required>
+    </div>
 
-                            <button type="submit" class="btn btn-primary">S’inscrire</button>
-                        </form>
+    <div class="form-group">
+        <label for="password">Mot de passe <span class="required">*</span></label>
+        <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="********"
+            required>
+    </div>
+
+    <!-- RGPD -->
+    <div class="form-group form-rgpd">
+        <label class="checkbox-label">
+            <input
+                type="checkbox"
+                name="rgpd"
+                value="1"
+                <?= !empty($_POST['rgpd']) ? 'checked' : '' ?>
+                required>
+
+            <span>
+                J’accepte que mes données personnelles soient collectées et utilisées
+                par Élégance Event afin de créer mon compte et gérer mes demandes.
+                <br>
+                <small>
+                    Conformément au RGPD, vous pouvez exercer vos droits d’accès,
+                    de modification ou de suppression de vos données à tout moment.
+                    <a href="<?= BASE_URL ?>/index.php?route=privacy" target="_blank">
+                        En savoir plus
+                    </a>
+                </small>
+            </span>
+        </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        S’inscrire
+    </button>
+
+</form>
 
                         <p class="login-text">
                             Vous avez déjà un compte ?
@@ -155,8 +184,9 @@
         <div class="container footer-bottom">
             <p>&copy; 2026 Élégance Event. Tous droits réservés.</p>
             <ul class="footer-links-inline">
-                <li><a href="#">Mentions légales</a></li>
-                <li><a href="#">Confidentialité</a></li>
+               <li><a href="<?= BASE_URL ?>/index.php?route=mentions">Mentions légales</a></li>
+                    <li><a href="<?= BASE_URL ?>/index.php?route=privacy">Politique de confidentialité</a></li>
+                    <li><a href="<?= BASE_URL ?>/index.php?route=cgu">Conditions d’utilisation</a></li>
                 <li><a href="#">Presse</a></li>
             </ul>
         </div>

@@ -158,8 +158,9 @@
             <p>&copy; 2026 Élégance Event. Tous droits réservés.</p>
 
             <ul class="footer-links-inline">
-                <li><a href="#">Mentions légales</a></li>
-                <li><a href="#">Confidentialité</a></li>
+                <li><a href="<?= BASE_URL ?>/index.php?route=mentions">Mentions légales</a></li>
+                    <li><a href="<?= BASE_URL ?>/index.php?route=privacy">Politique de confidentialité</a></li>
+                    <li><a href="<?= BASE_URL ?>/index.php?route=cgu">Conditions d’utilisation</a></li>
                 <li><a href="#">Presse</a></li>
                 <li><a href="<?= BASE_URL ?>/index.php?route=contact">Contact</a></li>
             </ul>

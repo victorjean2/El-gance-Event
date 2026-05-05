@@ -55,7 +55,7 @@ class AdminProductController
                         $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
                         $imageName = time() . '_' . uniqid() . '.' . $extension;
 
-                        $uploadDirectory = '../public/uploads/';
+                        $uploadDirectory = '../public_html/uploads/';
                         $targetPath = $uploadDirectory . $imageName;
 
                         if (!is_dir($uploadDirectory)) {
@@ -90,7 +90,7 @@ class AdminProductController
             }
         }
 
-        require_once '../app/views/admin/products/create.php';
+        require_once '../views/admin/products/create.php';
     }
 
     public function edit()
@@ -140,7 +140,7 @@ class AdminProductController
                         $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
                         $imageName = time() . '_' . uniqid() . '.' . $extension;
 
-                        $uploadDirectory = '../public/uploads/';
+                        $uploadDirectory = '../public_html/uploads/';
                         $targetPath = $uploadDirectory . $imageName;
 
                         if (!is_dir($uploadDirectory)) {
@@ -174,7 +174,7 @@ class AdminProductController
             }
         }
 
-        require_once '../app/views/admin/products/edit.php';
+        require_once '../views/admin/products/edit.php';
     }
 
     public function delete()

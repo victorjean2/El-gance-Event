@@ -124,3 +124,33 @@ case 'admin_review_delete':
             $this->pdo->rollBack();
             return false;
         }
+
+
+
+require_once '../controllers/LegalController.php';
+require_once '../controllers/LegalController.php';
+
+$controller = new LegalController();
+$controller = new LegalController();
+
+        case 'mentions':
+    $controller->mentions();
+    break;
+
+case 'privacy':
+    $controller->privacy();
+    break;
+
+
+git add .
+git commit -m "ton message"
+git push
+
+
+case 'cgu':
+    $controller->cgu();
+    break;
+
+
+    require_once '../app/controllers/LegalController.php';
+    $controller = new LegalController();

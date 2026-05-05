@@ -243,6 +243,64 @@ ul {
 }
 
 /* =========================
+   RGPD
+========================= */
+.required {
+    color: #c0392b;
+    margin-left: 4px;
+    font-weight: bold;
+}
+
+.form-rgpd {
+    padding: 1rem;
+    background-color: #faf7f2;
+    border: 1px solid #eadfce;
+    border-radius: 10px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    margin-top: 0.25rem;
+    accent-color: #c47a1c;
+    cursor: pointer;
+}
+
+.checkbox-label span {
+    font-size: 0.9rem;
+    color: #444444;
+    line-height: 1.5;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.checkbox-label small {
+    display: block;
+    margin-top: 0.5rem;
+    color: #666666;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+.checkbox-label a {
+    color: #c47a1c;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.checkbox-label a:hover {
+    color: #9d5f12;
+}
+
+/* =========================
    MESSAGES
 ========================= */
 .form-messages {

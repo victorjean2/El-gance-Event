@@ -4,8 +4,8 @@ function validatePassword($password)
 {
     $errors = [];
 
-    if (strlen($password) < 8) {
-        $errors[] = "Le mot de passe doit contenir au moins 8 caractères.";
+    if (strlen($password) < 12) {
+        $errors[] = "Le mot de passe doit contenir au moins 12 caractères.";
     }
 
     if (!preg_match('/[A-Z]/', $password)) {
